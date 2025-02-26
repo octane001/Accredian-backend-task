@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const prisma = new PrismaClient();
 
-const PORT = 5000;
+const PORT = process.env.PORT||5000;
 
 // Middleware
 app.set("view engine", "ejs");
