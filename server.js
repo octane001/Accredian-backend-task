@@ -22,12 +22,16 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(
-  cors({
-    origin: "https://accredian-frontend-task-d09svinyy.vercel.app",
+
+app.use(cors({
+    origin: [
+        "https://accredian-frontend-task-d09svinyy.vercel.app",
+        "https://accredian-frontend-task-seven-steel.vercel.app"
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
+    credentials: true
+}));
+
 
 // Utility function to hash emails
 async function hashEmails(referrer_email, referee_email) {
